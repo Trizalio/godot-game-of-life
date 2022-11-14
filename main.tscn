@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mouse_tracker.gd" type="Script" id=2]
+[ext_resource path="res://life.tres" type="Material" id=3]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("container/viewport")
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="container" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -800.0
+margin_bottom = -450.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="viewport" type="Viewport" parent="container"]
+size = Vector2( 800, 450 )
+size_override_stretch = true
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+disable_3d = true
+usage = 0
+render_target_v_flip = true
+render_target_clear_mode = 1
+render_target_update_mode = 3
+
+[node name="playground" type="Sprite" parent="container/viewport"]
+material = ExtResource( 3 )
+texture = SubResource( 1 )
+centered = false
+
+[node name="mouse_tracker" type="ColorRect" parent="container/viewport"]
+visible = false
+rect_min_size = Vector2( 5, 5 )
+script = ExtResource( 2 )
